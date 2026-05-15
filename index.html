@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wiblio – Digitaler Dritter Ort</title>
+<title>Wiblio auf der re:publica 2026 – Aus Begegnung wird Community</title>
+<meta name="description" content="Wiblio ist der digitale öffentliche Raum der Berliner Bibliotheken: für Talks, Communities, Wissen und Austausch nach dem Event.">
 <style>
   @font-face {
     font-family: 'GT Pressura';
@@ -21,9 +22,11 @@
     --acid: #64eef2;
     --dark: #0C0C0C;
     --mid: #1A1A1A;
+    --card: #151515;
     --border: #2E2E2E;
     --text: #F0EDE6;
-    --muted: #888880;
+    --muted: #A8A49C;
+    --quiet: #77736B;
     --syne: 'GT Pressura', 'Trebuchet MS', system-ui, sans-serif;
     --body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
@@ -40,96 +43,95 @@
     overflow-x: hidden;
   }
 
-  /* PREVIEW BANNER */
+  a { color: inherit; }
+
   .preview-bar {
     background: var(--acid);
     color: #0C0C0C;
     text-align: center;
     font-family: var(--syne);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 12px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     padding: 10px 1rem;
   }
 
-  /* NAV */
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 3rem;
     border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(12, 12, 12, 0.92);
+    backdrop-filter: blur(12px);
   }
 
   .logo {
     font-family: var(--syne);
     font-weight: 800;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--text);
     letter-spacing: -0.01em;
   }
 
-  .logo span { color: var(--acid); }
-
-  .nav-tag {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 5px 12px;
-    border-radius: 2px;
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
-  /* HERO */
+  .nav-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .nav-cta {
+    background: var(--acid);
+    color: #0C0C0C;
+    font-family: var(--syne);
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 9px 14px;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+
   .hero {
-    padding: 6rem 3rem 5rem;
-    max-width: 960px;
+    padding: 6rem 3rem 4.5rem;
+    max-width: 1120px;
     margin: 0 auto;
-    position: relative;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+    gap: 4rem;
     align-items: center;
   }
 
-  .hero-text {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero-image {
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    animation: fadeUp 0.5s ease both;
-    animation-delay: 0.35s;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+  .hero-eyebrow, .section-label, .badge {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    gap: 10px;
     color: var(--acid);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .hero-eyebrow::before {
     content: '';
-    display: block;
-    width: 28px;
+    width: 30px;
     height: 2px;
     background: var(--acid);
   }
@@ -137,70 +139,89 @@
   h1 {
     font-family: var(--syne);
     font-weight: 800;
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 1.0;
-    letter-spacing: -0.03em;
+    font-size: clamp(3.2rem, 7vw, 6.3rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
     color: var(--text);
     margin-bottom: 2rem;
   }
 
-  h1 .highlight {
-    color: var(--acid);
-    display: block;
-  }
+  h1 .highlight { color: var(--acid); display: block; }
 
   .hero-sub {
-    font-size: 1.2rem;
-    color: #A8A49C;
-    max-width: 620px;
-    line-height: 1.65;
-    font-weight: 400;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--muted);
+    max-width: 650px;
+    line-height: 1.6;
     border-left: 3px solid var(--acid);
     padding-left: 1.5rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
   }
 
-  .hero-cta {
+  .hero-proof {
+    color: var(--quiet);
+    font-size: 0.92rem;
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .primary-cta, .secondary-cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--acid);
-    color: #0C0C0C;
     font-family: var(--syne);
-    font-weight: 700;
+    font-weight: 800;
     font-size: 0.9rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 14px 28px;
+    padding: 14px 24px;
     border-radius: 2px;
     text-decoration: none;
-    transition: opacity 0.15s;
+    transition: opacity 0.15s, border-color 0.15s;
   }
 
-  .hero-cta:hover { opacity: 0.85; }
-  .hero-cta svg { width: 16px; height: 16px; }
+  .primary-cta { background: var(--acid); color: #0C0C0C; }
+  .secondary-cta { border: 1px solid var(--border); color: var(--text); }
+  .primary-cta:hover, .secondary-cta:hover { opacity: 0.86; border-color: var(--acid); }
 
-  /* DIVIDER */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0 3rem;
+  .hero-image-wrap {
+    position: relative;
   }
 
-  /* SECTION */
+  .hero-image {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--mid);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+  }
+
+  .hero-image img { width: 100%; height: auto; display: block; }
+
+  .image-caption {
+    margin-top: 1rem;
+    color: var(--quiet);
+    font-size: 0.82rem;
+  }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0 3rem; }
+
   section {
     padding: 5rem 3rem;
-    max-width: 960px;
+    max-width: 1120px;
     margin: 0 auto;
   }
 
   .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 3rem;
+    color: var(--quiet);
+    margin-bottom: 2.5rem;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -213,168 +234,80 @@
     background: var(--border);
   }
 
-  /* PROBLEM STATEMENT */
   .statement {
     font-family: var(--syne);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 700;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.65rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
     color: var(--text);
-    margin-bottom: 1.5rem;
+    max-width: 880px;
+    margin-bottom: 1.25rem;
   }
 
   .statement em {
     font-style: normal;
-    color: var(--muted);
+    color: var(--quiet);
     text-decoration: line-through;
     text-decoration-color: var(--border);
   }
 
-  /* STAT ROW */
+  .lead {
+    color: var(--muted);
+    max-width: 720px;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
   .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
-    margin: 3rem 0;
     border-radius: 3px;
     overflow: hidden;
+    margin-top: 3rem;
   }
 
-  .stat {
+  .stat { background: var(--mid); padding: 2rem 1.75rem; }
+  .stat-num { font-family: var(--syne); font-weight: 800; font-size: 2.4rem; color: var(--acid); letter-spacing: -0.03em; display: block; margin-bottom: 0.35rem; }
+  .stat-label { font-size: 0.84rem; color: var(--muted); line-height: 1.45; font-weight: 500; }
+
+  .audiences, .usecases, .principles, .features {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .audiences { grid-template-columns: repeat(3, 1fr); }
+  .usecases { grid-template-columns: repeat(3, 1fr); }
+  .principles { grid-template-columns: repeat(3, 1fr); }
+  .features { grid-template-columns: repeat(2, 1fr); background: var(--border); gap: 1px; border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
+
+  .card, .principle, .usecase, .audience, .feature {
     background: var(--mid);
-    padding: 2rem 1.75rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1.75rem;
   }
 
-  .stat-num {
+  .features .feature { border: 0; border-radius: 0; display: flex; gap: 1rem; align-items: flex-start; }
+
+  .badge { color: var(--acid); display: block; margin-bottom: 0.8rem; }
+
+  h2, h3, h4 {
     font-family: var(--syne);
     font-weight: 800;
-    font-size: 2.25rem;
-    color: var(--acid);
-    letter-spacing: -0.03em;
-    display: block;
-    margin-bottom: 0.35rem;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.4;
-    font-weight: 500;
-  }
-
-  /* 3 USPs */
-  .usps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 1rem;
-  }
-
-  .usp {
-    padding: 2rem 1.75rem;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    background: var(--mid);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .usp::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--acid);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .usp:hover::before { opacity: 1; }
-
-  .usp-icon {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .usp h3 {
-    font-family: var(--syne);
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     color: var(--text);
-    margin-bottom: 0.65rem;
   }
 
-  .usp p {
-    font-size: 0.875rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
+  .card h3, .principle h3, .usecase h3, .audience h3 { font-size: 1.08rem; margin-bottom: 0.65rem; }
+  .card p, .principle p, .usecase p, .audience p, .feature p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
 
-  /* FLOW SECTION */
   .flow {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-    background: var(--border);
-  }
-
-  .flow-step {
-    flex: 1;
-    background: var(--mid);
-    padding: 2rem 1.5rem;
-    position: relative;
-  }
-
-  .flow-step:not(:last-child)::after {
-    content: '→';
-    position: absolute;
-    right: -14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--acid);
-    font-family: var(--syne);
-    font-weight: 700;
-    font-size: 1.2rem;
-    z-index: 2;
-  }
-
-  .flow-tag {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--acid);
-    margin-bottom: 0.75rem;
-    display: block;
-  }
-
-  .flow-step h4 {
-    font-family: var(--syne);
-    font-weight: 700;
-    font-size: 1.05rem;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .flow-step p {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* FEATURES GRID */
-  .features {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -382,288 +315,337 @@
     overflow: hidden;
   }
 
-  .feature {
-    background: var(--mid);
-    padding: 1.75rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-  }
-
-  .feature-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--acid);
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 6px;
-  }
-
-  .feature h4 {
+  .flow-step { background: var(--mid); padding: 1.75rem; position: relative; }
+  .flow-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -13px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--acid);
     font-family: var(--syne);
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--text);
-    margin-bottom: 0.3rem;
+    font-weight: 800;
+    z-index: 2;
+  }
+  .flow-step h4 { font-size: 1rem; margin-bottom: 0.45rem; }
+  .flow-step p { color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
+
+  .feature-dot { width: 8px; height: 8px; background: var(--acid); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+  .feature h4 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+
+  .cta-panel {
+    max-width: 1120px;
+    margin: 0 auto 5rem;
+    padding: 0 3rem;
   }
 
-  .feature p {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.5;
+  .cta-box {
+    border: 1px solid var(--acid);
+    background: linear-gradient(135deg, rgba(100, 238, 242, 0.12), rgba(100, 238, 242, 0.02));
+    border-radius: 4px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: center;
   }
 
-  /* PREVIEW DISCLAIMER */
+  .cta-box h2 { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.05; margin-bottom: 0.8rem; }
+  .cta-box p { color: var(--muted); max-width: 620px; }
+
   .disclaimer {
-    margin: 0 3rem 5rem;
+    max-width: 1120px;
+    margin: 0 auto 4rem;
+    padding: 0 3rem;
+  }
+
+  .disclaimer-inner {
     border: 1px solid #3a3700;
     border-radius: 3px;
     background: #141300;
-    padding: 1.5rem 2rem;
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    max-width: 900px;
+    padding: 1.35rem 1.6rem;
   }
+  .disclaimer h4 { color: var(--acid); font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .disclaimer p { color: #8D8752; font-size: 0.86rem; line-height: 1.55; }
 
-  .disclaimer-icon {
-    font-size: 1.25rem;
-    flex-shrink: 0;
-    line-height: 1.4;
-  }
-
-  .disclaimer h4 {
-    font-family: var(--syne);
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--acid);
-    margin-bottom: 0.35rem;
-  }
-
-  .disclaimer p {
-    font-size: 0.85rem;
-    color: #6E6940;
-    line-height: 1.55;
-  }
-
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
     font-size: 0.8rem;
-    color: var(--muted);
+    color: var(--quiet);
   }
 
-  .footer-logo {
-    font-family: var(--syne);
-    font-weight: 800;
-    font-size: 0.9rem;
-    color: var(--text);
-  }
-
-  .footer-logo span { color: var(--acid); }
-
-  .footer-meta { display: flex; gap: 2rem; }
-  .footer-meta a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
+  .footer-logo { font-family: var(--syne); font-weight: 800; font-size: 0.95rem; color: var(--text); }
+  .footer-meta { display: flex; gap: 1.4rem; flex-wrap: wrap; justify-content: flex-end; }
+  .footer-meta a { color: var(--quiet); text-decoration: none; }
   .footer-meta a:hover { color: var(--text); }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero > * {
-    animation: fadeUp 0.5s ease both;
-  }
-
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-text > *, .hero-image-wrap { animation: fadeUp 0.55s ease both; }
   .hero-eyebrow { animation-delay: 0.05s; }
-  h1            { animation-delay: 0.12s; }
-  .hero-sub     { animation-delay: 0.2s; }
-  .hero-cta     { animation-delay: 0.28s; }
+  h1 { animation-delay: 0.12s; }
+  .hero-sub { animation-delay: 0.2s; }
+  .hero-proof { animation-delay: 0.26s; }
+  .cta-row { animation-delay: 0.32s; }
+  .hero-image-wrap { animation-delay: 0.38s; }
 
-  /* RESPONSIVE */
-  @media (max-width: 720px) {
-    nav { padding: 1.25rem 1.5rem; }
-    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
-    .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
-    .hero-image { order: -1; }
-    .divider, .disclaimer { margin-left: 1.5rem; margin-right: 1.5rem; }
-    footer { flex-direction: column; gap: 1rem; padding: 1.5rem; }
-    .stats, .usps { grid-template-columns: 1fr; }
-    .features { grid-template-columns: 1fr; }
-    .flow { flex-direction: column; }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 2.25rem; padding-top: 3.5rem; }
+    .hero-image-wrap { order: -1; }
+    .audiences, .usecases, .principles, .stats, .flow { grid-template-columns: 1fr; }
     .flow-step::after { display: none; }
-    h1 { font-size: 2.75rem; }
+    .features { grid-template-columns: 1fr; }
+    .cta-box { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    nav { padding: 1.15rem 1.5rem; }
+    .nav-links .nav-link { display: none; }
+    .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .divider { margin-left: 1.5rem; margin-right: 1.5rem; }
+    .cta-panel, .disclaimer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .cta-box { padding: 1.75rem; }
+    footer { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+    .footer-meta { justify-content: flex-start; }
+    h1 { font-size: 3.15rem; }
   }
 </style>
 </head>
 <body>
 
-<div class="preview-bar">
-  ⚡ Temporäre Preview · Wiblio befindet sich in der Entwicklung · Kein finales Produkt
-</div>
+<div class="preview-bar">Temporäre Preview · Wiblio befindet sich in der Entwicklung · Feedback willkommen</div>
 
 <nav>
   <div class="logo">Wiblio</div>
-  <div class="nav-tag">re:publica 2026</div>
+  <div class="nav-links">
+    <a class="nav-link" href="#usecases">Use Cases</a>
+    <a class="nav-link" href="#funktionen">Funktionen</a>
+    <a class="nav-cta" href="https://www.wiblio.org/invites/zQtKnvmahu">Preview öffnen</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <div class="hero-text">
-    <div class="hero-eyebrow">Digitaler Dritter Ort</div>
-    <h1>
-      Aus einem Talk<br>
-      <span class="highlight">wird ein Raum.</span>
-    </h1>
-    <p class="hero-sub">
-      Bibliotheken schaffen Begegnung. Wiblio verlängert sie –
-      als digitaler öffentlicher Raum für das, was nach dem Event passiert.
+<main>
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Wiblio auf der re:publica 2026</div>
+      <h1>
+        Aus Begegnung
+        <span class="highlight">wird Community.</span>
+      </h1>
+      <p class="hero-sub">
+        Wiblio ist der digitale öffentliche Raum der Berliner Bibliotheken. Für Talks, Workshops und Communities, die nach dem Event weitergehen sollen.
+      </p>
+      <p class="hero-proof">
+        Statt Diskussionen in WhatsApp-Gruppen, LinkedIn-Kommentaren oder Plattformen wie Facebook zu verlieren, schafft Wiblio einen kuratierten Ort für Austausch, Wissen und Zusammenarbeit.
+      </p>
+      <div class="cta-row">
+        <a href="https://www.wiblio.org/invites/zQtKnvmahu" class="primary-cta">Wiblio ausprobieren</a>
+        <a href="#usecases" class="secondary-cta">Use Cases ansehen</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image">
+        <img src="republica-wiblio.png" alt="re:publica × Wiblio">
+      </div>
+      <p class="image-caption">Preview zur re:publica: frühe Version, echter Austausch, offenes Feedback.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <section id="problem">
+    <div class="section-label">Warum Wiblio?</div>
+    <p class="statement">
+      Gute Gespräche, neue Kontakte und gemeinsames Wissen sollten nicht nach dem letzten Programmpunkt verschwinden.
     </p>
-    <a href="https://www.wiblio.org/invites/zQtKnvmahu" class="hero-cta">
-      Wiblio entdecken
-      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </div>
-  <div class="hero-image">
-    <img src="republica-wiblio.png" alt="re:publica × Wiblio">
-  </div>
-</div>
-
-<hr class="divider">
-
-<section id="was-ist-wiblio">
-  <div class="section-label">Das Problem</div>
-  <p class="statement">
-    <em>Gespräche enden.</em> Kontakte gehen verloren. Communities zerfallen auf WhatsApp, LinkedIn und anderswo.
-  </p>
-  <p style="color: var(--muted); max-width: 600px; font-size: 0.95rem;">
-    Bibliotheken sind längst mehr als Ausleihstationen. 2024 zählte die ZLB allein über 33.000 Veranstaltungen mit 670.000 Besuchen. Dieser Austausch hat keinen digitalen Ort zum Weitermachen.
-  </p>
-
-  <div class="stats">
-    <div class="stat">
-      <span class="stat-num">8,4 Mio.</span>
-      <span class="stat-label">Bibliotheksbesuche 2024<br>(VOEBB)</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">33.100+</span>
-      <span class="stat-label">Veranstaltungen pro Jahr<br>mit über 670.000 Besucher:innen</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">84</span>
-      <span class="stat-label">Berlin hat eine einmalige Bibliotheks-Infrastruktur mit 84 Standorten.</span>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section>
-  <div class="section-label">Wiblio im Überblick</div>
-
-  <div class="usps">
-    <div class="usp">
-      <span class="usp-icon">🏛</span>
-      <h3>Öffentlich, nicht kommerziell</h3>
-      <p>Werbefrei, DSGVO-konform, öffentlich getragen. Eine Alternative zu Big-Tech-Plattformen mit demokratischem Mandat.</p>
-    </div>
-    <div class="usp">
-      <span class="usp-icon">🔗</span>
-      <h3>Kontinuität statt Eintagsfliegen</h3>
-      <p>Events enden. Diskussionen müssen es nicht. Wiblio hält Communities zusammen und schafft digitale Kontinuität nach der Begegnung.</p>
-    </div>
-    <div class="usp">
-      <span class="usp-icon">🔓</span>
-      <h3>Niedriger Einstieg, breite Basis</h3>
-      <p>Perspektivisch mit Bibliotheksausweis nutzbar. Offen für alle – nicht nur für die Digital Natives.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section>
-  <div class="section-label">Wie es funktioniert – hier, heute</div>
-
-  <div class="flow">
-    <div class="flow-step">
-      <span class="flow-tag">Vor dem Event</span>
-      <h4>Ein Talk, ein Panel, ein Workshop</h4>
-      <p>Physische Begegnung in der Bibliothek oder auf der Konferenz.</p>
-    </div>
-    <div class="flow-step">
-      <span class="flow-tag">Der Übergang</span>
-      <h4>Wiblio öffnet den Raum</h4>
-      <p>Speaker, Publikum und Organisationen bekommen einen eigenen digitalen Ort.</p>
-    </div>
-    <div class="flow-step">
-      <span class="flow-tag">Danach</span>
-      <h4>Community bleibt zusammen</h4>
-      <p>Diskussionen laufen weiter. Kooperationen entstehen. Wissen bleibt erhalten.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section>
-  <div class="section-label">Was Wiblio bündelt</div>
-  <p style="color: var(--muted); max-width: 560px; margin-bottom: 2rem; font-size: 0.95rem;">
-    Wiblio ist kein klassisches Forum und kein Social Network. Es ist ein Arbeitsraum für Communities.
-  </p>
-
-  <div class="features">
-    <div class="feature">
-      <div class="feature-dot"></div>
-      <div>
-        <h4>Austausch</h4>
-        <p>Forum und Chat für nachhaltige Diskussionen nach Events und Talks.</p>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-dot"></div>
-      <div>
-        <h4>Wissen</h4>
-        <p>Wiki und kollaborative Dokumente – Ergebnisse bleiben sichtbar.</p>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-dot"></div>
-      <div>
-        <h4>Organisation</h4>
-        <p>Events, Abstimmungen, Termine – alles an einem Ort, nicht verteilt.</p>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-dot"></div>
-      <div>
-        <h4>Community</h4>
-        <p>Mitglieder, Gruppen und Rollen – für Stiftungen, Initiativen und Medien.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="disclaimer">
-  <div class="disclaimer-icon">⚡</div>
-  <div>
-    <h4>Temporäre Preview – kein finales Produkt</h4>
-    <p>
-      Was du hier siehst, ist eine frühe Vorschau von Wiblio, das als Infrastruktur für Bibliotheks-Communities entwickelt wird. Der VÖBB und das ZLB-Team stehen am Anfang. Feedback ist ausdrücklich willkommen. Funktionen, Design und Struktur werden sich noch erheblich verändern.
+    <p class="lead">
+      Bibliotheken sind Orte der Begegnung, Bildung und Teilhabe. Wiblio überträgt diese Stärke in einen digitalen Raum, ohne Werbung, ohne Plattformlogik, ohne Abhängigkeit von kommerziellen Netzwerken.
     </p>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">84</span>
+        <span class="stat-label">öffentliche Bibliotheksstandorte in Berlin</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">34.000+</span>
+        <span class="stat-label">Veranstaltungen, Ausstellungen und Führungen 2024</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">640.000+</span>
+        <span class="stat-label">Veranstaltungsbesucher im VÖBB</span>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="fuer-wen">
+    <div class="section-label">Für wen?</div>
+    <p class="statement">Wiblio richtet sich an Menschen und Organisationen, die Austausch nicht dem Zufall überlassen wollen.</p>
+
+    <div class="audiences">
+      <div class="audience">
+        <span class="badge">Speaker</span>
+        <h3>Nach dem Talk weiterreden</h3>
+        <p>Fragen sammeln, Quellen teilen, Diskussionen fortsetzen und mit interessierten Menschen in Kontakt bleiben.</p>
+      </div>
+      <div class="audience">
+        <span class="badge">Organisationen</span>
+        <h3>Eine Community aufbauen</h3>
+        <p>Stiftungen, Initiativen, Medien und Kulturakteure können Zielgruppen an einem vertrauenswürdigen Ort zusammenbringen.</p>
+      </div>
+      <div class="audience">
+        <span class="badge">Besucher:innen</span>
+        <h3>Nicht nur konsumieren</h3>
+        <p>Mitmachen, Fragen stellen, Wissen beisteuern und Menschen mit ähnlichen Interessen wiederfinden.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="usecases">
+    <div class="section-label">Use Cases zur re:publica</div>
+    <p class="statement">Wiblio macht aus einem Moment einen gemeinsamen Arbeits- und Austauschraum.</p>
+
+    <div class="usecases">
+      <div class="usecase">
+        <span class="badge">01</span>
+        <h3>Talk verlängern</h3>
+        <p>Ein Vortrag endet nicht mit der letzten Folie. Materialien, Fragen und Diskussionen bleiben an einem Ort verfügbar.</p>
+      </div>
+      <div class="usecase">
+        <span class="badge">02</span>
+        <h3>Workshop begleiten</h3>
+        <p>Teilnehmende können Ergebnisse dokumentieren, gemeinsam weiterarbeiten und nächste Schritte abstimmen.</p>
+      </div>
+      <div class="usecase">
+        <span class="badge">03</span>
+        <h3>Community starten</h3>
+        <p>Aus einem Treffen wird ein dauerhafter Raum für Austausch, Zusammenarbeit und neue Kooperationen.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="ablauf">
+    <div class="section-label">So funktioniert es</div>
+    <div class="flow">
+      <div class="flow-step">
+        <span class="badge">Schritt 1</span>
+        <h4>Event erleben</h4>
+        <p>Talk, Panel, Workshop oder Begegnung auf der re:publica.</p>
+      </div>
+      <div class="flow-step">
+        <span class="badge">Schritt 2</span>
+        <h4>Raum öffnen</h4>
+        <p>Über Wiblio entsteht ein passender digitaler Ort für die Gruppe.</p>
+      </div>
+      <div class="flow-step">
+        <span class="badge">Schritt 3</span>
+        <h4>Wissen sammeln</h4>
+        <p>Links, Dokumente, Fragen, Ergebnisse und Ideen bleiben auffindbar.</p>
+      </div>
+      <div class="flow-step">
+        <span class="badge">Schritt 4</span>
+        <h4>Community halten</h4>
+        <p>Aus Publikum wird Austausch. Aus Austausch wird Zusammenarbeit.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="warum-bibliotheken">
+    <div class="section-label">Warum Bibliotheken?</div>
+    <p class="statement">Weil digitale Räume nicht nur technisch funktionieren müssen. Sie brauchen Vertrauen, Regeln und Gastgeber:innen.</p>
+
+    <div class="principles">
+      <div class="principle">
+        <span class="badge">Öffentlich</span>
+        <h3>Gemeinwohl statt Reichweite</h3>
+        <p>Wiblio ist kein Werbenetzwerk und kein Geschäftsmodell auf Basis von Aufmerksamkeit.</p>
+      </div>
+      <div class="principle">
+        <span class="badge">Vertrauenswürdig</span>
+        <h3>Kuratierter Raum</h3>
+        <p>Bibliotheken stehen für Zugang, Orientierung und zivilisierten Austausch. Genau diese Qualität braucht das Digitale.</p>
+      </div>
+      <div class="principle">
+        <span class="badge">Niedrigschwellig</span>
+        <h3>Für viele, nicht für wenige</h3>
+        <p>Wiblio soll digitale Teilhabe erleichtern und perspektivisch an die bestehende Bibliotheksinfrastruktur anschließen.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="funktionen">
+    <div class="section-label">Was Wiblio bündelt</div>
+    <p class="lead">Wiblio kombiniert Community, Wissen und Organisation in einem gemeinsamen Arbeitsraum.</p>
+
+    <div class="features">
+      <div class="feature">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Austausch</h4>
+          <p>Forum und Chat für Diskussionen, Fragen und schnelle Abstimmung.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Wissen</h4>
+          <p>Wiki, kollaborative Dokumente und geteilte Materialien.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Organisation</h4>
+          <p>Events, Termine, Abstimmungen und nächste Schritte an einem Ort.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-dot"></div>
+        <div>
+          <h4>Community</h4>
+          <p>Gruppen, Rollen und Räume für einzelne Themen, Partner und Veranstaltungen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-panel">
+    <div class="cta-box">
+      <div>
+        <h2>Teste Wiblio als Preview.</h2>
+        <p>Die Version zur re:publica ist bewusst früh. Sie soll zeigen, wie digitale Community-Räume rund um Veranstaltungen funktionieren können.</p>
+      </div>
+      <a href="https://www.wiblio.org/invites/zQtKnvmahu" class="primary-cta">Preview öffnen</a>
+    </div>
   </div>
-</div>
+
+  <div class="disclaimer">
+    <div class="disclaimer-inner">
+      <h4>Temporäre Preview für die re:publica 2026</h4>
+      <p>Wiblio befindet sich in der Entwicklung. Funktionen, Design, Struktur und Zugänge können sich verändern. Die Preview dient dazu, konkrete Nutzungssituationen zu testen und Feedback einzusammeln.</p>
+    </div>
+  </div>
+</main>
 
 <footer>
   <div class="footer-logo">Wiblio</div>
   <div class="footer-meta">
-    <span>Ein Projekt des Verbunds der Öffentlichen Bibliotheken Berlin (VÖBB)</span>
+    <span>Ein Projekt des Verbunds der Öffentlichen Bibliotheken Berlins (VÖBB)</span>
     <a href="https://www.wiblio.org/tos">Nutzungsbedingungen</a>
     <a href="https://www.wiblio.org/privacy">Datenschutz</a>
     <a href="https://www.wiblio.org/t/impressum">Impressum</a>
